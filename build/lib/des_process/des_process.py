@@ -1,7 +1,6 @@
 #coding: utf-8
 
 import requests
-import json
 
 # API URL:
 url = "http://scienceportal-dev.linea.gov.br/api/graphql"

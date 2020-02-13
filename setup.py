@@ -5,7 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
   name="des-process",
-  version="0.0.9",
+  install_requires=[
+    "requests",
+  ],
+  version="0.2.0",
   author="Matheus Allein",
   author_email="mtsallein@gmail.com",
   description="A collection of functions for fetching processes and products from DES.",
