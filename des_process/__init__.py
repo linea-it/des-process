@@ -2,3 +2,6 @@
 
 from des_process.Processes import Processes
 from des_process.Products import Products
+
+processes = Processes()
+products = Products()

@@ -8,7 +8,7 @@ setuptools.setup(
   install_requires=[
     "requests",
   ],
-  version="1.0.5",
+  version="1.0.6",
   author="Matheus Allein",
   author_email="mtsallein@gmail.com",
   description="A collection of functions for fetching processes and products from DES.",

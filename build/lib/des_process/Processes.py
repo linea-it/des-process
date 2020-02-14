@@ -2,7 +2,6 @@
 
 import requests
 
-
 class Processes:
 
   def __init__(self):
@@ -41,7 +40,7 @@ class Processes:
 
 
   # Get process by its process id:
-  def get_process_by_process_id(self, process_id):
+  def get_process_by_id(self, process_id):
     query = """{
       processByProcessId(processId: %s) {
         processId
@@ -61,4 +60,4 @@ class Processes:
 
     process = response.json()['data']['processByProcessId']
 
-    return [process]
+    return process

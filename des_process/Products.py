@@ -31,7 +31,7 @@ class Products:
     return products
 
   # Get product by its product id:
-  def get_product_by_product_id(self, product_id):
+  def get_product_by_id(self, product_id):
     query = """{
       productByProductId(productId: %s) {
         productId
@@ -50,10 +50,10 @@ class Products:
 
     product = response.json()['data']['productByProductId']
 
-    return [product]
+    return product
 
   # Get product by its display name:
-  def get_product_by_display_name(self, display_name):
+  def get_product_by_name(self, display_name):
     query = """{
       productsList(displayName: "%s") {
         edges {
