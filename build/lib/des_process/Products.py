@@ -55,7 +55,7 @@ class Products:
   # Get product by its display name:
   def get_product_by_display_name(self, display_name):
     query = """{
-      productsList(display_name: "%s") {
+      productsList(displayName: "%s") {
         edges {
           node {
             productId
