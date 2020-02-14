@@ -7,11 +7,9 @@ class Processes:
   def __init__(self):
     self.url = "http://scienceportal-dev.linea.gov.br/api/graphql"
 
-  # Get a list of all processes:
-  # @TODO: Results 504. For now, a limit was set to prevent it.
-  def get_processes(self):
+  def processes(self, parameters=""):
     query = """{
-      processesList {
+      processesList%s {
         edges {
           node {
             processId
@@ -27,11 +25,11 @@ class Processes:
           }
         }
       }
-    }"""
+    }""" % parameters
 
-    response = requests.post(self.url, json={ 'query': query })
+    response = requests.post(self.url, json={ 'query': query }).json()
 
-    edges = response.json()['data']['processesList']['edges']
+    edges = response['data']['processesList']['edges']
 
     # Removing unecessary parent node property inside of every process:
     processes = list(map(lambda x: x['node'], edges))
@@ -39,8 +37,13 @@ class Processes:
     return processes
 
 
+  # Get all processes:
+  def all(self):
+    return self.processes()
+
+
   # Get process by its process id:
-  def get_process_by_id(self, process_id):
+  def by_id(self, id):
     query = """{
       processByProcessId(processId: %s) {
         processId
@@ -54,10 +57,10 @@ class Processes:
           displayName
         }
       }
-    }""" % process_id
+    }""" % id
 
-    response = requests.post(self.url, json={ 'query': query })
+    response = requests.post(self.url, json={ 'query': query }).json()
 
-    process = response.json()['data']['processByProcessId']
+    process = response['data']['processByProcessId']
 
     return process

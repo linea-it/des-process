@@ -7,55 +7,9 @@ class Products:
   def __init__(self):
     self.url = "http://scienceportal-dev.linea.gov.br/api/graphql"
 
-  # Get all products by their product id:
-  def get_products_by_process_id(self, process_id):
+  def products(self, parameters=""):
     query = """{
-      productsByProcessId(processId: %s) {
-        productId
-        fileId
-        jobId
-        tableId
-        classId
-        flagRemoved
-        displayName
-        version
-        selectedName
-      }
-    }""" % process_id
-
-
-    response = requests.post(self.url, json={ 'query': query })
-
-    products = response.json()['data']['productsByProcessId']
-
-    return products
-
-  # Get product by its product id:
-  def get_product_by_id(self, product_id):
-    query = """{
-      productByProductId(productId: %s) {
-        productId
-        fileId
-        jobId
-        tableId
-        classId
-        flagRemoved
-        displayName
-        version
-        selectedName
-      }
-    }""" % product_id
-
-    response = requests.post(self.url, json={ 'query': query })
-
-    product = response.json()['data']['productByProductId']
-
-    return product
-
-  # Get product by its display name:
-  def get_product_by_name(self, display_name):
-    query = """{
-      productsList(displayName: "%s") {
+      productsList%s {
         edges {
           node {
             productId
@@ -67,18 +21,100 @@ class Products:
             displayName
             version
             selectedName
-
+            table {
+              tableId
+              tableName
+              schemaName
+            }
           }
         }
       }
-    }""" % display_name
+    }""" % parameters
 
+    response = requests.post(self.url, json={ 'query': query }).json()
 
-    response = requests.post(self.url, json={ 'query': query })
-
-    edges = response.json()['data']['productsList']['edges']
+    edges = response['data']['productsList']['edges']
 
     # Removing unecessary parent node property inside of every process:
     products = list(map(lambda x: x['node'], edges))
 
     return products
+
+  # Get product by its display name:
+  def all(self):
+    return self.products()
+
+  # Get product by its product id:
+  def by_id(self, id):
+    query = """{
+      productByProductId(productId: %s) {
+        productId
+        fileId
+        jobId
+        tableId
+        classId
+        flagRemoved
+        displayName
+        version
+        selectedName
+        table {
+          tableId
+          tableName
+          schemaName
+        }
+      }
+    }""" % id
+
+    response = requests.post(self.url, json={ 'query': query }).json()
+
+    product = response['data']['productByProductId']
+
+    return product
+
+  # Get all products by their product id:
+  def by_process_id(self, process_id):
+    query = """{
+      productsByProcessId(processId: %s) {
+        productId
+        fileId
+        jobId
+        tableId
+        classId
+        flagRemoved
+        displayName
+        version
+        selectedName
+        table {
+          tableId
+          tableName
+          schemaName
+        }
+      }
+    }""" % process_id
+
+
+    response = requests.post(self.url, json={ 'query': query }).json()
+
+    products = response['data']['productsByProcessId']
+
+    return products
+
+  # Get product by its display name:
+  def by_name(self, name):
+    return self.products('(displayName: "%s")' % name)
+
+  # Get product by its tag id:
+  def by_tag_id(self, tag_id):
+    return self.products('(tagId: %s)' % tag_id)
+
+  # Get product by its field id:
+  def by_field_id(self, field_id):
+    return self.products('(fieldId: %s)' % field_id)
+
+  # Get product by its type id:
+  def by_type_id(self, type_id):
+    return self.products('(typeId: %s)' % type_id)
+
+  # Get product by its class id:
+  def by_class_id(self, class_id):
+    return self.products('(classId: %s)' % class_id)
