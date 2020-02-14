@@ -8,7 +8,7 @@ class Products:
     self.url = "http://scienceportal-dev.linea.gov.br/api/graphql"
 
   # Get all products by their product id:
-  def products_by_process_id(self, process_id):
+  def get_products_by_process_id(self, process_id):
     query = """{
       productsByProcessId(processId: %s) {
         productId
@@ -31,7 +31,7 @@ class Products:
     return products
 
   # Get product by its product id:
-  def product_by_product_id(self, product_id):
+  def get_product_by_product_id(self, product_id):
     query = """{
       productByProductId(productId: %s) {
         productId
@@ -53,7 +53,7 @@ class Products:
     return [product]
 
   # Get product by its display name:
-  def product_by_display_name(self, display_name):
+  def get_product_by_display_name(self, display_name):
     query = """{
       productsList(display_name: %s) {
         edges {
