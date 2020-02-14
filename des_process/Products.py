@@ -13,6 +13,7 @@ class Products:
         edges {
           node {
             productId
+            processId
             fileId
             jobId
             tableId
@@ -49,6 +50,7 @@ class Products:
     query = """{
       productByProductId(productId: %s) {
         productId
+        processId
         fileId
         jobId
         tableId
@@ -76,6 +78,7 @@ class Products:
     query = """{
       productsByProcessId(processId: %s) {
         productId
+        processId
         fileId
         jobId
         tableId
