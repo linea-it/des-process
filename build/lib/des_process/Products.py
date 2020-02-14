@@ -51,3 +51,34 @@ class Products:
     product = response.json()['data']['productByProductId']
 
     return [product]
+
+  # Get product by its display name:
+  def product_by_display_name(self, display_name):
+    query = """{
+      productsList(display_name: %s) {
+        edges {
+          node {
+            productId
+            fileId
+            jobId
+            tableId
+            classId
+            flagRemoved
+            displayName
+            version
+            selectedName
+
+          }
+        }
+      }
+    }""" % display_name
+
+
+    response = requests.post(self.url, json={ 'query': query })
+
+    edges = response.json()['data']['productsList']['edges']
+
+    # Removing unecessary parent node property inside of every process:
+    products = list(map(lambda x: x['node'], edges))
+
+    return products
