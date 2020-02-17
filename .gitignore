@@ -1,0 +1,4 @@
+des_process/__pycache__
+des_process/snapshots
+htmlcov
+.coverage
