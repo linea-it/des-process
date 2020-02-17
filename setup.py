@@ -8,6 +8,14 @@ setuptools.setup(
   install_requires=[
     "requests",
   ],
+  extras_require={
+    'dev': [
+      'snapshottest',
+      'coverage',
+      'pytest',
+      'pytest-cov'
+    ]
+  },
   version="1.1.2",
   author="Matheus Allein",
   author_email="mtsallein@gmail.com",
