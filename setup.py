@@ -10,6 +10,7 @@ setuptools.setup(
   ],
   extras_require={
     'dev': [
+      'pycodestyle',
       'snapshottest',
       'coverage',
       'pytest',
