@@ -20,24 +20,12 @@ pipeline {
           // sh 'python setup.py develop'
           sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
           sh "echo ${env.WORKSPACE}"
+          sh 'cd des_process'
+          sh 'pycodestyle .'
+          sh 'pytest'
+          sh 'coverage report'
+          sh 'coverage html'
         }
-      }
-    }
-    stage('Check lint') {
-      steps {
-        sh 'cd des_process'
-        sh 'pycodestyle .'
-      }
-    }
-    stage('Check testing') {
-      steps {
-        sh 'pytest'
-      }
-    }
-    stage('Check coverage') {
-      steps {
-        sh 'coverage report'
-        sh 'coverage html'
       }
     }
   }
