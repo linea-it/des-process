@@ -16,8 +16,8 @@ pipeline {
     stage('Installing dependencies') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'python setup.py develop'
-          //sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
+          // sh 'python setup.py develop'
+          sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
         }
       }
     }
