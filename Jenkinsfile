@@ -6,15 +6,16 @@ pipeline {
         sh 'python --version'
       }
     }
+    stage('Virtual ENV') {
+      steps {
+        sh 'python -m venv env'
+        sh 'source ./env/bin/activate'
+      }
+    }
     stage('Install dependencies') {
       steps {
         sh 'ls -la'
-        sh 'pip install requests --user'
-        sh 'pip install pycodestyle --user'
-        sh 'pip install snapshottest --user'
-        //sh 'pip install coverage --user'
-        sh 'pip install pytest --user'
-        //sh 'pip install pytest-cov --user'
+        sh 'pip install requests pycodestyle snapshottest coverage pytest pytest-cov'
       }
     }
     stage('Check lint') {
@@ -28,11 +29,11 @@ pipeline {
         sh 'pytest'
       }
     }
-    //stage('Check coverage') {
-      //steps {
-        //sh 'coverage report'
-        //sh 'coverage html'
-      //}
-    //}
+    stage('Check coverage') {
+      steps {
+        sh 'coverage report'
+        sh 'coverage html'
+      }
+    }
   }
 }
