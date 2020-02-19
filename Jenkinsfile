@@ -9,7 +9,7 @@ pipeline {
     stage('Install dependencies') {
       steps {
         sh 'python3 -m venv env'
-        sh 'source ./env/bin/activate'
+        sh '. ./env/bin/activate'
         sh 'python setup.py develop'
       }
     }
