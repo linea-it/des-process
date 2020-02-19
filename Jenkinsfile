@@ -8,6 +8,8 @@ pipeline {
     }
     stage('Install dependencies') {
       steps {
+        sh 'python3 -m venv env'
+        sh 'source ./env/bin/activate'
         sh 'python setup.py develop'
       }
     }
@@ -19,13 +21,11 @@ pipeline {
     }
     stage('Check testing') {
       steps {
-        sh 'cd des_process'
         sh 'pytest'
       }
     }
     stage('Check coverage') {
       steps {
-        sh 'cd des_process'
         sh 'coverage report'
         sh 'coverage html'
       }
