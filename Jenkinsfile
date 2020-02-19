@@ -12,9 +12,9 @@ pipeline {
         sh 'pip install requests --user'
         sh 'pip install pycodestyle --user'
         sh 'pip install snapshottest --user'
-        sh 'pip install coverage --user'
+        //sh 'pip install coverage --user'
         sh 'pip install pytest --user'
-        sh 'pip install pytest-cov --user'
+        //sh 'pip install pytest-cov --user'
       }
     }
     stage('Check lint') {
@@ -28,11 +28,11 @@ pipeline {
         sh 'pytest'
       }
     }
-    stage('Check coverage') {
-      steps {
-        sh 'coverage report'
-        sh 'coverage html'
-      }
-    }
+    //stage('Check coverage') {
+      //steps {
+        //sh 'coverage report'
+        //sh 'coverage html'
+      //}
+    //}
   }
 }
