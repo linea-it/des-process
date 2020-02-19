@@ -1,8 +1,11 @@
 README.md
+setup.cfg
 setup.py
-des_process/Processes.py
-des_process/Products.py
 des_process/__init__.py
+des_process/processes.py
+des_process/products.py
+des_process/test_processes.py
+des_process/test_products.py
 des_process.egg-info/PKG-INFO
 des_process.egg-info/SOURCES.txt
 des_process.egg-info/dependency_links.txt
