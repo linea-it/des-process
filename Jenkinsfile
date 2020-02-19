@@ -9,7 +9,7 @@ pipeline {
     stage('Virtual ENV') {
       steps {
         sh 'python -m venv env'
-        sh 'source ./env/bin/activate'
+        sh '. ./env/bin/activate'
       }
     }
     stage('Install dependencies') {
