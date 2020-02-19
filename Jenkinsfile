@@ -9,11 +9,16 @@ pipeline {
     stage('Virtual ENV') {
       steps {
         sh 'python -m venv env'
-        sh '''
-          . ./env/bin/activate
-          pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov
-        '''
+        sh '. ./env/bin/activate'
         sh 'ls -lah'
+      }
+    }
+    stage('Installing dependencies') {
+      steps {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'python setup.py develop'
+          //sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
+        }
       }
     }
     stage('Check lint') {
