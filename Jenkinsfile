@@ -15,11 +15,8 @@ pipeline {
     }
     stage('Installing dependencies') {
       steps {
-        withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh "echo ${env.WORKSPACE}"
-          // sh 'python setup.py develop'
+        withDockerContainer(image: 'python:3.6.9', args:'-u root:root'){
           sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
-          sh "echo ${env.WORKSPACE}"
         }
       }
     }
