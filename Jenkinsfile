@@ -9,9 +9,11 @@ pipeline {
     stage('Virtual ENV') {
       steps {
         sh 'python -m venv env'
-        sh '. ./env/bin/activate'
-        sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
-        sh 'ls -la'
+        sh '''
+          . ./env/bin/activate
+          pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov
+        '''
+        sh 'ls -lah'
       }
     }
     stage('Check lint') {
