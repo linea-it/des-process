@@ -8,9 +8,13 @@ pipeline {
     }
     stage('Install dependencies') {
       steps {
-        sh 'python -m venv env'
-        sh '. ./env/bin/activate'
-        sh 'python setup.py develop'
+        sh 'ls -la'
+        sh 'pip install requests --user'
+        sh 'pip install pycodestyle --user'
+        sh 'pip install snapshottest --user'
+        sh 'pip install coverage --user'
+        sh 'pip install pytest --user'
+        sh 'pip install pytest-cov --user'
       }
     }
     stage('Check lint') {
