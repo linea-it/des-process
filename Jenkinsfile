@@ -15,7 +15,7 @@ pipeline {
     stage('Install dependencies') {
       steps {
         sh 'ls -la'
-        sh 'pip install requests pycodestyle snapshottest coverage pytest pytest-cov'
+        sh 'pip install --user requests pycodestyle snapshottest coverage pytest pytest-cov'
       }
     }
     stage('Check lint') {
