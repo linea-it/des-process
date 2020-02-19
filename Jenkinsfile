@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Install dependencies') {
       steps {
-        sh 'python3 -m venv env'
+        sh 'python -m venv env'
         sh '. ./env/bin/activate'
         sh 'python setup.py develop'
       }
