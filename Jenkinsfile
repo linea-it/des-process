@@ -1,33 +1,10 @@
 pipeline {
-  agent { docker { image 'python:3.6.9' } }
+  agent any
+
   stages {
-    stage('Check Python') {
+    stage('Test') {
       steps {
-        sh 'python --version'
-      }
-    }
-    stage('Install dependencies') {
-      steps {
-        sh 'python -m venv env'
-        sh '. ./env/bin/activate'
-        sh 'python setup.py develop'
-      }
-    }
-    stage('Check lint') {
-      steps {
-        sh 'cd des_process'
-        sh 'pycodestyle .'
-      }
-    }
-    stage('Check testing') {
-      steps {
-        sh 'pytest'
-      }
-    }
-    stage('Check coverage') {
-      steps {
-        sh 'coverage report'
-        sh 'coverage html'
+        sh "docker build ."
       }
     }
   }
