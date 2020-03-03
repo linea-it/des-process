@@ -1,4 +1,8 @@
 des_process/__pycache__
 des_process/snapshots
+.pytest_cache
+bin
+build
 htmlcov
+des_process.egg-info
 .coverage
