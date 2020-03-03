@@ -1,8 +1,0 @@
-requests
-
-[dev]
-pycodestyle
-snapshottest
-coverage
-pytest
-pytest-cov
