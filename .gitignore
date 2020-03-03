@@ -6,3 +6,4 @@ build
 htmlcov
 des_process.egg-info
 .coverage
+.coveralls.yml
