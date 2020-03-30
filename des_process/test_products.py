@@ -8,10 +8,6 @@ class TestProducts(snapshottest.TestCase):
   def setUp(self):
     self.url = "http://scienceportal-dev.linea.gov.br/api/graphql"
 
-  def test_products(self, parameters=""):
-    self.assertEqual(product.products('(first: 1)'), [{'productId': 310867, 'processId': 10034331, 'fileId': None, 'jobId': 995215, 'tableId': 14249, 'classId': 189, 'flagRemoved': False, 'displayName': 'ExpTime Sum 51', 'version': 51, 'selectedName': None, 'table': {'tableId': 14249, 'tableName': 'y3a1_coadd_subset_01_1024_exptime_sum_r_10034331', 'schemaName': 'systematic_maps'}}])
-
-
   def test_all(self):
     query = """{
       productsList(first: 5) {
