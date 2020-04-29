@@ -9,12 +9,12 @@ setuptools.setup(
     "requests==2.23.0",
   ],
   extras_require={
-    'dev': [
-      'pycodestyle==2.5.0',
-      'snapshottest==0.5.1',
-      'coverage==5.0.4',
-      'pytest==5.4.1',
-      'pytest-cov==2.8.1'
+    "dev": [
+      "pycodestyle==2.5.0",
+      "snapshottest==0.5.1",
+      "coverage==5.0.4",
+      "pytest==5.4.1",
+      "pytest-cov==2.8.1"
     ]
   },
   version="1.1.2",
