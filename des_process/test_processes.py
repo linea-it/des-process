@@ -28,6 +28,24 @@ class TestProcesses(snapshottest.TestCase):
       }
     }"""
 
+    response = requests.post(self.url, json={ 'query': query })
+    self.assertMatchSnapshot(response.json()['data'])
+
+  def test_by_id(self):
+    query = """{
+      processByProcessId(processId: 10011314) {
+        processId
+        startTime
+        endTime
+        name
+        productLog
+        processDir
+        size
+        processStatus {
+          displayName
+        }
+      }
+    }"""
 
     response = requests.post(self.url, json={ 'query': query })
     self.assertMatchSnapshot(response.json()['data'])

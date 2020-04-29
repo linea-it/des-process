@@ -41,7 +41,7 @@ class Products:
 
     return products
 
-  # Get product by its display name:
+  # Get all products:
   def all(self):
     return self.products()
 
@@ -73,7 +73,7 @@ class Products:
 
     return product
 
-  # Get all products by their product id:
+  # Get all products by their process id:
   def by_process_id(self, process_id):
     query = """{
       productsByProcessId(processId: %s) {
@@ -106,18 +106,18 @@ class Products:
   def by_name(self, name):
     return self.products('(displayName: "%s")' % name)
 
-  # Get product by its tag id:
+  # Get products by their tag id:
   def by_tag_id(self, tag_id):
     return self.products('(tagId: %s)' % tag_id)
 
-  # Get product by its field id:
+  # Get products by their field id:
   def by_field_id(self, field_id):
     return self.products('(fieldId: %s)' % field_id)
 
-  # Get product by its type id:
+  # Get products by their type id:
   def by_type_id(self, type_id):
     return self.products('(typeId: %s)' % type_id)
 
-  # Get product by its class id:
+  # Get products by their class id:
   def by_class_id(self, class_id):
     return self.products('(classId: %s)' % class_id)
