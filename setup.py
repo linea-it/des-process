@@ -17,7 +17,7 @@ setuptools.setup(
       'pytest-cov==2.8.1'
     ]
   },
-  version="1.1.2",
+  version="1.5.0",
   author="Matheus Allein",
   author_email="mtsallein@gmail.com",
   description="A collection of functions for fetching processes and products from DES.",
