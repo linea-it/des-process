@@ -29,7 +29,6 @@ from des_process import process
 ```
 process.all()
 ```
-  - _`limit: Number` (optional)_: property to limit the output.
 
 #### Get process by its process id:
 ```
@@ -47,7 +46,6 @@ from des_process import product
 ```
 product.all()
 ```
-  - _`limit: Number` (optional)_: property to limit the output.
 
 #### Get product by its product id
 ```
