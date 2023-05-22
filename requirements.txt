@@ -1,4 +1,4 @@
-requests==2.23.0
+requests==2.31.0
 pycodestyle==2.5.0
 snapshottest==0.5.1
 coverage==5.0.4
