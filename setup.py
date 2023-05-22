@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
   name="des-process",
   install_requires=[
-    "requests==2.23.0",
+    "requests==2.31.0",
   ],
   extras_require={
     "dev": [
